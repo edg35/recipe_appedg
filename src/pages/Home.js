@@ -57,7 +57,7 @@ const Home = () => {
         }
       </div>
       <div className='popular-section'>
-        <Grid2 container spacing={2} sx={{display: 'flex', justifyContent: 'space-evenly'}}>
+        <Grid2 container spacing={2} sx={{display: 'flex', justifyContent: 'space-evenly', padding: '0 7vw 0 7vw'}}>
           <Grid2 item xs={12} md={6} lg={3}>
             <RecipeCard />
           </Grid2>

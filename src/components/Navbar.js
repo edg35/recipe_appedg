@@ -15,6 +15,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { auth } from '../firebase/firebaseconfig';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -60,9 +62,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const [isSignedin, setisSignedin] = React.useState(false);
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const handleSignin = (res) => {
+        setisSignedin(true);
+
+    }
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -80,6 +88,17 @@ const Navbar = () => {
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+
+    const signInWithGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((res) => {
+                handleSignin(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -100,6 +119,7 @@ const Navbar = () => {
         >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            {!isSignedin ? <MenuItem>Logout</MenuItem> : <MenuItem onClick={signInWithGoogle}>Sign in</MenuItem>}
         </Menu>
     );
 

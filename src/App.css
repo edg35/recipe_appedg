@@ -49,3 +49,27 @@
 .popular-section {
   width: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+  .hero-section {
+    max-height: 20vh;
+  }
+
+  .hero-section h1 {
+    font-size: 3vh;
+  }
+
+  .recipe-card-content {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .hero-section {
+    max-height: 30vh;
+  }
+
+  .recipe-card-content {
+    display: none;
+  }
+}

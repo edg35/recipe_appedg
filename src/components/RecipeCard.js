@@ -19,7 +19,7 @@ const RecipeCard = () => {
               src="https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=1600"
             alt="food"
         />
-        <CardContent>
+        <CardContent className='recipe-card-content'>
             <Typography variant="body2" color="text.secondary">
                 This impressive paella is a perfect party dish and a fun meal to cook
                 together with your guests. Add 1 cup of frozen peas along with the mussels,
